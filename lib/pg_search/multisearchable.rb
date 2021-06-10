@@ -11,7 +11,7 @@ module PgSearch
                 class_name: "PgSearch::Document",
                 dependent: :delete
 
-        after_save :update_pg_search_document,
+        after_commit :update_pg_search_document,
                    if: -> { PgSearch.multisearch_enabled? }
       end
     end
